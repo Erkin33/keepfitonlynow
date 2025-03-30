@@ -9,8 +9,28 @@ generator client {
 
 model User {
   id        Int      @id @default(autoincrement())
-  name      String?  // можно использовать для имени
+  name      String?
   email     String   @unique
   password  String
+  coins     Int      @default(0)
   createdAt DateTime @default(now())
+  // Связи с блогами и тренировками, если нужны
+  blogPosts BlogPost[]
+  workouts  UserWorkout[]
 }
+
+model BlogPost {
+  id         Int      @id @default(autoincrement())
+  title      String
+  slug       String   @unique
+  content    String
+  createdAt  DateTime @default(now())
+  author     User?    @relation(fields: [authorId], references: [id])\n  authorId   Int?\n}
+
+model Workout {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  duration    Int      // продолжительность в минутах\n  videoUrl    String?\n  createdAt   DateTime @default(now())\n  userWorkouts UserWorkout[]\n}
+
+model UserWorkout {\n  id         Int      @id @default(autoincrement())\n  user       User     @relation(fields: [userId], references: [id])\n  userId     Int\n  workout    Workout  @relation(fields: [workoutId], references: [id])\n  workoutId  Int\n  completedAt DateTime @default(now())\n}
