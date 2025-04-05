@@ -1,103 +1,180 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 
-export default function Home() {
+export default function HomePage() {
+  // Состояние number определяет текущий выбранный номер
+  const [number, setNumber] = useState(1);
+
+  let info = "";
+  let specialInfo = "";
+  let MainInfo = "";
+  let imageUrl = ""; // Путь к фоновому изображению
+  let PeopleUrl = ""; // Путь к изображению людей
+  let textColor = "#000000";
+  let rightInfo = '';
+  let buttonInfo = '';
+  // Функция обновляет переменные в зависимости от выбранного номера
+  function Content() {
+    switch (number) {
+      case 1: {
+        info = "Basefit";
+        specialInfo = "Новый";
+        MainInfo = "базовый сбалансированный курс";
+        imageUrl = "/Main/f1.webp";
+        PeopleUrl = "/Main/first1.webp";
+        textColor = '#000000';
+        rightInfo ='Для тех, кому важен результат. Поможет улучшить форму, повысить выносливость и закрепить прогресс.';
+        buttonInfo = 'Узнать подробнее';
+        break;
+      }
+      case 2: {
+        info = "Забота. Движение. Сила. CARE";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f2.webp";
+        textColor = '#000000';
+        PeopleUrl = "/Main/second2.webp";
+        rightInfo ='Доверьтесь своему телу — и позвольте ему стать сильнее, грациознее, свободнее. Сделайте этот шаг к себе с любовью.';
+        buttonInfo = 'Записаться на курс';
+        break;
+      }
+      case 3: {
+        info = "SuperHuman";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f3.webp";
+        textColor = '#ffffff';
+        PeopleUrl = "/Main/third3.webp";
+        rightInfo ='Онлайн-фитнес курс с интенсивной нагрузкой. Каждый день новые тренировки для похудения и рельефа, советы по питанию и ментальному состоянию.';
+        buttonInfo = 'Узнать подробнее';
+        break;
+      }
+      case 4: {
+        info = "Не знаете, что выбрать?";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f4.webp";
+        textColor = '#000000';
+        PeopleUrl = "/Main/fourth4.webp";
+        rightInfo ='Пройдите короткий тест, чтобы подобрать подходящую программу тренировок и питания.';
+        buttonInfo = 'Пройти тест';
+        break;
+      }
+      case 5: {
+        info = "Все наши курсы";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f5.webp";
+        textColor = '#000000';
+        PeopleUrl = "/Main/fivth5.webp";
+        rightInfo ='Можно пройти из любой точки мира — нужны только кроссовки и доступ к интернету. Время и место тренировок вы выбираете сами.';
+        buttonInfo = 'Узнать больше';
+        break;
+      }
+      case 6: {
+        info = "Возьмите от курсов максимум!";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f6.webp";
+        textColor = '#000000';
+        PeopleUrl = "/Main/sixth6.webp";
+        rightInfo ='Комплексные курсы #sekta можно пройти при поддержке куратора. Общение в персональном чате, поддержка в трудную минуту и помощь в работе с питанием и тренировками.';
+        buttonInfo = 'Выбрать курс с куратором';
+        break;
+      }
+      case 7: {
+        info = "HAVE a METAL × #SEKTA";
+        specialInfo = "";
+        MainInfo = "";
+        imageUrl = "/Main/f7.webp";
+        textColor = '#000000';
+        PeopleUrl = "/Main/seventh7.webp";
+        rightInfo ='Кольца и браслеты напомнят о важных целях, календарь поможет спланировать яркий год, а гирлянда украсит любимое место для тренировок.';
+        buttonInfo = 'Смотреть коллекцию';
+        break;
+      }
+      default: {
+        info = "Basefit";
+        specialInfo = "Новый";
+        MainInfo = "базовый сбалансированный курс";
+        imageUrl = "/Main/f1.webp";
+        textColor = '#000000';
+        PeopleUrl = "";
+        break;
+      }
+    }
+  }
+  // Обновляем переменные согласно текущему значению number
+  Content();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    // Добавляем key={number} чтобы при каждом изменении number элемент размонтировался и анимация запускалась заново
+    <div
+      key={number}
+      style={{
+        backgroundImage: `url(${imageUrl})`,
+      }}
+      className="text-center w-full flex bg-cover justify-center items-center h-[683px] animate-[fadeMove_1s_ease-in-out]"
+    >
+      <div className="container min-[720px]:w-[80%] max-[768px]:flex-col h-full mx-auto flex flex-row items-center justify-between p-4 bg-cover">
+        {/* Левая колонка с текстовым контентом и кнопками */}
+        <div className="max-[1024px]:hidden w-[250px] max-[1400px]:w-[200px] flex flex-col items-center justify-center h-[90%]">
+          <div className="max-w-[420px] w-full h-[50%]">
+            <h2 style={{color: `${textColor}`}} className="max-[1100px]:text-[29px] w-full max-[1400px]:text-[40px] font-[600] text-[44px] leading-[58px] text-left">
+              {info}
+            </h2>
+            <p className="text-start w-full font-[600] text-[14px]">
+              <span className="bg-[#dd8553]">{specialInfo}</span> {MainInfo}
+            </p>
+          </div>
+          {/* Кнопки переключения */}
+          <div className="w-full flex justify-between items-center">
+            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+              <button
+                key={index}
+                onClick={() => setNumber(index)}
+                className={`w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
+                  number === index ? "bg-black" : "bg-white"
+                }`}
+              ></button>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Центральная колонка с изображением людей */}
+        <div
+          className="w-[75%] max-[768px]:mx-[auto] max-[768px]:w-full max-[850px]:h-[50%] max-[1100px]:h-[57%] max-[1300px]:w-[70%] max-[1200px]:h-[60%] max-[1300px]:h-[70%] h-[90%] bg-cover max-[1400px]:w-[900px] max-[1400px]:h-[80%] min-[1500px]:!w-[993px] min-[1500px]:h-[605px]"
+          style={{
+            backgroundImage: `url(${PeopleUrl})`,
+          }}
+        ></div>
+
+        {/* Правая колонка с повтором текстового контента */}
+        <div className="w-[380px] max-[1300px]:w-[250px] h-[50%] flex flex-col justify-center max-[850px]:space-around items-center">
+          <div className="w-full max-[1024px]:h-[60%] h-[40%] flex flex-col justify-around items-start">
+            <p style={{color: `${textColor}`}} className="max-[1300px]:text-[12px] text-start w-full font-[600] text-[14px]">
+              {rightInfo}              
+            </p>
+            <button style={{color: `${textColor}`, borderColor: `${textColor}`}} className="max-[1300px]:text-[12px] min-w-[216px] border-[1px] border-[#181818] min-h-[50px] mt-[40px] max-[1024px]:mb-[40px]">
+                {buttonInfo}
+            </button>
+          </div>
+          {/* Кнопки переключения */}
+          <div className="w-full min-[1024px]:hidden flex justify-between items-center">
+            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+              <button
+                key={index}
+                onClick={() => setNumber(index)}
+                className={`w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
+                  number === index ? "bg-black" : "bg-white"
+                }`}
+              ></button>
+            ))}
+          </div>
+          {/* <p className="">{number}/7</p> */}
+        </div>
+        
+      </div>
     </div>
   );
 }
