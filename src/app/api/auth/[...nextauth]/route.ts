@@ -27,22 +27,28 @@ const handler = NextAuth({
         if (!isValid) {
           throw new Error("Неверный пароль");
         }
-        // Преобразуем id в строку
+        // Преобразуем id в строку и возвращаем данные пользователя
         return { id: user.id.toString(), email: user.email, name: user.name };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.id = user.id;
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+      }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
+        session.user.email = token.email as string;
+        session.user.name = token.name as string;
       }
       return session;
-    },
+    }
   },
 });
 

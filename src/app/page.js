@@ -1,6 +1,7 @@
 "use client";
 import Plans from "../components/Plans";
 import { useState } from "react";
+import FloatingButton from "../components/Floating";
 export default function HomePage() {
   // Состояние number определяет текущий выбранный номер
   const [number, setNumber] = useState(1);
@@ -17,92 +18,93 @@ console.log(Plans)
   function Content() {
     switch (number) {
       case 1: {
-        info = "Basefit";
-        specialInfo = "Новый";
-        MainInfo = "базовый сбалансированный курс";
+        info = "KeepFit";
+        specialInfo = "Инновация";
+        MainInfo = "Стартовый курс для достижения новых вершин";
         imageUrl = "/Main/f1.webp";
         PeopleUrl = "/Main/first1.webp";
-        textColor = '#000000';
-        rightInfo ='Для тех, кому важен результат. Поможет улучшить форму, повысить выносливость и закрепить прогресс.';
-        buttonInfo = 'Узнать подробнее';
+        textColor = "#000000";
+        rightInfo = "Программа, которая поднимет вашу форму на новый уровень. Персонализированный подход и проверенные методики.";
+        buttonInfo = "Начать сейчас";
         break;
       }
       case 2: {
-        info = "Забота. Движение. Сила. CARE";
-        specialInfo = "";
-        MainInfo = "";
+        info = "CARE";
+        specialInfo = "Забота";
+        MainInfo = "Программа заботы о теле и душе";
         imageUrl = "/Main/f2.webp";
-        textColor = '#000000';
         PeopleUrl = "/Main/second2.webp";
-        rightInfo ='Доверьтесь своему телу — и позвольте ему стать сильнее, грациознее, свободнее. Сделайте этот шаг к себе с любовью.';
-        buttonInfo = 'Записаться на курс';
+        textColor = "#000000";
+        rightInfo = "Откройте для себя секреты гармонии и силы. Каждая тренировка – шаг к лучшей версии себя.";
+        buttonInfo = "Присоединиться";
         break;
       }
       case 3: {
         info = "SuperHuman";
-        specialInfo = "";
-        MainInfo = "";
+        specialInfo = "Эволюция";
+        MainInfo = "Интенсивный курс для настоящих героев";
         imageUrl = "/Main/f3.webp";
-        textColor = '#ffffff';
         PeopleUrl = "/Main/third3.webp";
-        rightInfo ='Онлайн-фитнес курс с интенсивной нагрузкой. Каждый день новые тренировки для похудения и рельефа, советы по питанию и ментальному состоянию.';
-        buttonInfo = 'Узнать подробнее';
+        textColor = "#ffffff";
+        rightInfo = "Дневные тренировки, силовые нагрузки и советы от профи. Готовы стать суперчеловеком?";
+        buttonInfo = "Преобразиться";
         break;
       }
       case 4: {
-        info = "Не знаете, что выбрать?";
-        specialInfo = "";
-        MainInfo = "";
+        info = "Не уверены?";
+        specialInfo = "Экспертное решение";
+        MainInfo = "Найдите свой идеальный курс";
         imageUrl = "/Main/f4.webp";
-        textColor = '#000000';
-        PeopleUrl = "/Main/fourth4.webp";
-        rightInfo ='Пройдите короткий тест, чтобы подобрать подходящую программу тренировок и питания.';
-        buttonInfo = 'Пройти тест';
+        PeopleUrl = "/Main/fivth5.webp";
+        textColor = "#000000";
+        rightInfo = "Пройдите наш интерактивный тест и получите рекомендации, которые изменят ваше представление о тренировках.";
+        buttonInfo = "Пройти тест";
         break;
       }
       case 5: {
-        info = "Все наши курсы";
-        specialInfo = "";
-        MainInfo = "";
+        info = "Все Курсы";
+        specialInfo = "Коллекция";
+        MainInfo = "Откройте для себя весь спектр возможностей";
         imageUrl = "/Main/f5.webp";
-        textColor = '#000000';
-        PeopleUrl = "/Main/fivth5.webp";
-        rightInfo ='Можно пройти из любой точки мира — нужны только кроссовки и доступ к интернету. Время и место тренировок вы выбираете сами.';
-        buttonInfo = 'Узнать больше';
+        PeopleUrl = "/Main/sixth6.webp";
+        textColor = "#000000";
+        rightInfo = "Погрузитесь в мир фитнеса с разнообразными программами. Выбирайте, экспериментируйте и достигайте большего.";
+        buttonInfo = "Узнать больше";
         break;
       }
       case 6: {
-        info = "Возьмите от курсов максимум!";
-        specialInfo = "";
-        MainInfo = "";
+        info = "Премиум Опыт";
+        specialInfo = "Максимум возможностей";
+        MainInfo = "Курсы с поддержкой персонального тренера";
         imageUrl = "/Main/f6.webp";
-        textColor = '#000000';
-        PeopleUrl = "/Main/sixth6.webp";
-        rightInfo ='Комплексные курсы #sekta можно пройти при поддержке куратора. Общение в персональном чате, поддержка в трудную минуту и помощь в работе с питанием и тренировками.';
-        buttonInfo = 'Выбрать курс с куратором';
+        PeopleUrl = "/Main/fourth4.webp";
+        textColor = "#000000";
+        rightInfo = "Получите индивидуальное сопровождение и максимальный эффект от тренировок. Ваш успех — наша миссия.";
+        buttonInfo = "Записаться сейчас";
         break;
       }
       case 7: {
-        info = "HAVE a METAL × #SEKTA";
-        specialInfo = "";
-        MainInfo = "";
+        info = "HAVE a METAL";
+        specialInfo = "Эксклюзив";
+        MainInfo = "Стильные аксессуары для спортсменов";
         imageUrl = "/Main/f7.webp";
-        textColor = '#000000';
         PeopleUrl = "/Main/seventh7.webp";
-        rightInfo ='Кольца и браслеты напомнят о важных целях, календарь поможет спланировать яркий год, а гирлянда украсит любимое место для тренировок.';
-        buttonInfo = 'Смотреть коллекцию';
+        textColor = "#000000";
+        rightInfo = "Элегантные аксессуары, которые вдохновят на новые победы. Стиль и функциональность в каждом элементе.";
+        buttonInfo = "Открыть коллекцию";
         break;
       }
       default: {
         info = "Basefit";
-        specialInfo = "Новый";
-        MainInfo = "базовый сбалансированный курс";
+        specialInfo = "Новинка";
+        MainInfo = "Оптимальный старт для вашего тела";
         imageUrl = "/Main/f1.webp";
-        textColor = '#000000';
+        textColor = "#000000";
         PeopleUrl = "";
         break;
       }
     }
+    
   }
   // Обновляем переменные согласно текущему значению number
   Content();
@@ -121,11 +123,11 @@ console.log(Plans)
       <div className="container min-[720px]:w-[80%] max-[768px]:flex-col h-full mx-auto flex flex-row items-center justify-between p-4 bg-cover">
         {/* Левая колонка с текстовым контентом и кнопками */}
         <div className="max-[1024px]:hidden w-[250px] max-[1400px]:w-[200px] flex flex-col items-center justify-center h-[90%]">
-          <div className="max-w-[420px] w-full h-[50%]">
+          <div className="max-w-[420px] w-full h-[50%] flex flex-col justify-center">
             <h2 style={{color: `${textColor}`}} className="max-[1100px]:text-[29px] w-full max-[1400px]:text-[40px] font-[600] text-[44px] leading-[58px] text-left">
               {info}
             </h2>
-            <p className="text-start w-full font-[600] text-[14px]">
+            <p style={{color : `${textColor}`}} className="text-start w-full font-[600] text-[14px]">
               <span className="bg-[#dd8553]">{specialInfo}</span> {MainInfo}
             </p>
           </div>
@@ -152,7 +154,7 @@ console.log(Plans)
         ></div>
 
         {/* Правая колонка с повтором текстового контента */}
-        <div className="w-[380px] max-[1300px]:w-[250px] h-[50%] flex flex-col justify-center max-[850px]:space-around items-center">
+        <div className="w-[380px] max-[1300px]:w-[250px] h-[90%] flex flex-col justify-center max-[850px]:space-around items-center">
           <div className="w-full max-[1024px]:h-[60%] h-[40%] flex flex-col justify-around items-start">
             <p style={{color: `${textColor}`}} className="max-[1300px]:text-[12px] text-start w-full font-[600] text-[14px]">
               {rightInfo}              
@@ -208,7 +210,7 @@ console.log(Plans)
   </div>
 </div>
 
-
+      <FloatingButton/>
     </div>
   );
 }
