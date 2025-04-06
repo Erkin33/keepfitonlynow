@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#181818] text-white relative z-30">
-      <div className="container mx-auto flex items-center justify-between p-4 h-[60px]">
+      <div className="container mx-auto max-w-[1180px] flex items-center justify-between p-4 h-[60px]">
         <Link href="/" className="text-xl md:text-[34px] font-serif font-bold">
           KeepFitOnly
         </Link>
@@ -62,20 +62,10 @@ export default function Header() {
               />
             </a>
             <a href="#">
-              <img
-                width="35"
-                height="35"
-                src="https://img.icons8.com/ios-filled/50/github.png"
-                alt="github"
-              />
+            <img width="35" height="35" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="instagram-new"/>
             </a>
             <a href="#">
-              <img
-                width="35"
-                height="35"
-                src="https://img.icons8.com/color/48/telegram-app--v1.png"
-                alt="telegram"
-              />
+            <img width="35" height="35" src="https://img.icons8.com/fluency/48/youtube-play.png" alt="youtube-play"/>
             </a>
           </div>
           {/* Мобильное меню: инициалы + кнопка-бургер */}

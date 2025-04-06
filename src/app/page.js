@@ -1,10 +1,10 @@
 "use client";
+import Plans from "../components/Plans";
 import { useState } from "react";
-
 export default function HomePage() {
   // Состояние number определяет текущий выбранный номер
   const [number, setNumber] = useState(1);
-
+console.log(Plans)
   let info = "";
   let specialInfo = "";
   let MainInfo = "";
@@ -109,7 +109,9 @@ export default function HomePage() {
 
   return (
     // Добавляем key={number} чтобы при каждом изменении number элемент размонтировался и анимация запускалась заново
-    <div
+    <div className="flex flex-col w-full">
+
+<div
       key={number}
       style={{
         backgroundImage: `url(${imageUrl})`,
@@ -175,6 +177,38 @@ export default function HomePage() {
         </div>
         
       </div>
+    </div>
+
+            {/* Second block */}
+<div className="w-full h-auto md:h-[422px] flex mt-[90px] min-[768px]:mb-[90px]">
+  <div className="w-full md:h-full max-w-[1180px] mx-auto flex flex-col justify-between">
+    <h2 className="text-[48px] leading-[58px] font-[600]">
+      Наш подход
+    </h2>
+    <div className="w-full flex flex-col md:flex-row md:justify-between">
+      {Plans.map((plan) => (
+        <div
+          key={plan.id}
+          className="w-full md:w-[380px] h-[244px] flex flex-col items-center"
+        >
+          <div className="w-full flex items-center">
+            <img
+              className="w-[60px] h-[60px] mr-[20px]"
+              src={plan.img}
+              alt={plan.title}
+            />
+            <p className="font-[600] text-[26px] w-[80%]">{plan.title}</p>
+          </div>
+          <p className="mt-[40px] text-[16px] leading-[22px]">
+            {plan.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
     </div>
   );
 }
