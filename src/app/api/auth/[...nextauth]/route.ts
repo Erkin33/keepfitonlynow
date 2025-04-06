@@ -1,4 +1,3 @@
-// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../../lib/prisma";
@@ -18,7 +17,9 @@ const handler = NextAuth({
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Введите email и пароль");
         }
-        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        });
         if (!user) {
           throw new Error("Пользователь не найден");
         }
@@ -26,7 +27,8 @@ const handler = NextAuth({
         if (!isValid) {
           throw new Error("Неверный пароль");
         }
-        return { id: user.id, email: user.email, name: user.name };
+        // Преобразуем id в строку
+        return { id: user.id.toString(), email: user.email, name: user.name };
       },
     }),
   ],
@@ -36,7 +38,9 @@ const handler = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      if (token && session.user) session.user.id = token.id as number;
+      if (session.user) {
+        session.user.id = token.id as string;
+      }
       return session;
     },
   },
