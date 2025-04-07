@@ -13,9 +13,9 @@ export default function ProfilePage() {
   const [message, setMessage] = useState("");
   const router = useRouter();
 
+  // При изменении сессии инициализируем данные пользователя
   useEffect(() => {
     if (session && session.user) {
-      // Инициализируем данные профиля из сессии
       setUserData(session.user);
       setFormData({
         name: session.user.name || "",
@@ -28,24 +28,30 @@ export default function ProfilePage() {
   if (!session)
     return (
       <p>
-        Пожалуйста, <a href="/login" className="text-blue-600 underline">войдите</a> для просмотра профиля.
+        Пожалуйста,{" "}
+        <a href="/login" className="text-blue-600 underline">
+          войдите
+        </a>{" "}
+        для просмотра профиля.
       </p>
     );
-
-  // Если данные профиля ещё не загружены, показываем сообщение загрузки
   if (!userData) return <p>Загрузка данных профиля...</p>;
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 border rounded shadow">
       <h1 className="text-2xl font-bold mb-4">Профиль пользователя</h1>
+      
       {message && <p className="mb-4 text-green-600">{message}</p>}
+      
       {editMode ? (
         <div className="space-y-4">
           <input
             type="text"
             name="name"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
             className="p-2 border rounded w-full"
             placeholder="Имя"
           />
@@ -53,7 +59,9 @@ export default function ProfilePage() {
             type="email"
             name="email"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             className="p-2 border rounded w-full"
             placeholder="Email"
           />
@@ -94,18 +102,30 @@ export default function ProfilePage() {
           <p>
             <strong>Email:</strong> {userData?.email}
           </p>
-          <button
-            onClick={() => setEditMode(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
-          >
-            Редактировать профиль
-          </button>
-          <button
-                onClick={() => signOut({callbackUrl:'/'}) }
-                className="hover:underline focus:outline-none"
-              >
-                Выйти
-          </button>
+          <p>
+            <strong>Монеты:</strong>{" "}
+            {userData?.coins !== undefined ? userData.coins : 0}
+          </p>
+          <div className="mt-4">
+            <p>
+              За каждую завершённую тренировку (один раз в день для каждого вида
+              тренировки) начисляется 5 монет.
+            </p>
+          </div>
+          <div className="flex gap-4 mt-4">
+            <button
+              onClick={() => setEditMode(true)}
+              className="px-4 py-2 bg-blue-600 text-white rounded"
+            >
+              Редактировать профиль
+            </button>
+            <button
+              onClick={() => signOut({ callbackUrl: "/" })}
+              className="hover:underline focus:outline-none"
+            >
+              Выйти
+            </button>
+          </div>
         </div>
       )}
     </div>

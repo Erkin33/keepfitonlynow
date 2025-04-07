@@ -10,7 +10,7 @@ export default function WorkoutTimer({ duration, onComplete }) {
       return;
     }
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTimeLeft(prev => prev - 1);
     }, 1000);
     return () => clearInterval(timer);
   }, [timeLeft, onComplete]);
