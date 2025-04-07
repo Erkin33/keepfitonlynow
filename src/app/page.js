@@ -2,6 +2,7 @@
 import Plans from "../components/Plans";
 import { useState } from "react";
 import FloatingButton from "../components/Floating";
+import Link from "next/link";
 export default function HomePage() {
   // Состояние number определяет текущий выбранный номер
   const [number, setNumber] = useState(1);
@@ -159,9 +160,11 @@ console.log(Plans)
             <p style={{color: `${textColor}`}} className="max-[1300px]:text-[12px] text-start w-full font-[600] text-[14px]">
               {rightInfo}              
             </p>
-            <button style={{color: `${textColor}`, borderColor: `${textColor}`}} className="max-[1300px]:text-[12px] min-w-[216px] border-[1px] border-[#181818] min-h-[50px] mt-[40px] max-[1024px]:mb-[40px]">
+            <Link href={'/workouts'}>
+            <button  style={{color: `${textColor}`, borderColor: `${textColor}`}} className="max-[1300px]:text-[12px] min-w-[216px] border-[1px] border-[#181818] min-h-[50px] mt-[40px] max-[1024px]:mb-[40px]">
                 {buttonInfo}
             </button>
+            </Link>
           </div>
           {/* Кнопки переключения */}
           <div className="w-full min-[1024px]:hidden flex justify-between items-center">
