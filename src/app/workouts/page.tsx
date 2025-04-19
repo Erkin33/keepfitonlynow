@@ -71,6 +71,7 @@ export default function WorkoutsPage() {
                   ))}
                 </Swiper>
                 <p className="text-gray-700 mt-2">Длительность: {w.duration} минут</p>
+                {/*  */}
               </div>
             </Link>
           </li>
