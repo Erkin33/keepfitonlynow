@@ -1,0 +1,63 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  name         String?
+  email        String        @unique
+  password     String
+  coins        Int           @default(0)
+  createdAt    DateTime      @default(now())
+  blogPosts    BlogPost[]
+  userWorkouts UserWorkout[]
+  chatMessages ChatMessage[] // Теперь связь определяется через ChatMessage.user
+}
+
+model BlogPost {
+  id         Int      @id @default(autoincrement())
+  title      String
+  slug       String   @unique
+  content    String
+  createdAt  DateTime @default(now())
+  author     User?    @relation(fields: [authorId], references: [id])
+  authorId   Int?
+}
+
+model Workout {
+  id           Int           @id @default(autoincrement())
+  title        String
+  description  String?
+  duration     Int           // Продолжительность тренировки (в минутах)
+  videoUrl     String?
+  createdAt    DateTime      @default(now())
+  userWorkouts UserWorkout[]
+}
+
+model UserWorkout {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
+  workout     Workout  @relation(fields: [workoutId], references: [id])
+  workoutId   Int
+  completedAt DateTime @default(now())
+}
+
+model ChatMessage {
+  id          Int      @id @default(autoincrement())
+  sender      String   // "user" или "admin"
+  text        String
+  createdAt   DateTime @default(now())
+
+  // Новое:
+  senderName  String?
+  senderEmail String?
+
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      Int?
+}
