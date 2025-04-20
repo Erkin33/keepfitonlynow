@@ -32,12 +32,13 @@ export default function WorkoutDetail() {
     } else if (params.id === "2") {
       workoutData = {
         id: 2,
-        title: "Силовая тренировка",
-        duration: 45,
+        title: "Йога",
+        duration: 30,
         images: [
-          { url: "/Training/Strength/S1.jpg", description: "Разминка" },
-          { url: "/Training/Strength/S2.jpg", description: "Основная часть" },
-          { url: "/Training/Strength/S3.jpg", description: "Финиш" },
+          { url: "/Training/Yoga/йога1.jpg", description: "Разминка" },
+          { url: "/Training/Yoga/йога2.jpeg", description: "Основная часть" },
+          { url: "/Training/Yoga/йога3.jpg", description: "Почти финиш" },
+          { url: "/Training/Yoga/йога4.jpg", description: "Финиш" },
         ],
       };
     } else if (params.id === "3") {
