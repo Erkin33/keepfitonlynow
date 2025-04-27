@@ -27,7 +27,7 @@ export default function BlogPage() {
       excerpt: "Самые свежие новости!",
       img: [
         { url: "/BLOG/Anime/Ha.webp" },
-        { url: "/BLOG/Anime/Ichigo.avif" },
+        { url: "/BLOG/Anime/ichigo.avif" },
         { url: "/BLOG/Anime/witch.jpg" },
         { url: "/BLOG/Anime/Zayka.jpg" },
       ],
