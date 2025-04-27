@@ -4,7 +4,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination,EffectFlip } from "swiper/modules";
+import "swiper/css/effect-flip"
+import 'swiper/css/effect-flip';
+import "swiper/css/effect-fade"
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -26,6 +29,7 @@ export default function BlogPage() {
         { url: "/BLOG/Anime/Ha.webp" },
         { url: "/BLOG/Anime/Ichigo.avif" },
         { url: "/BLOG/Anime/witch.jpg" },
+        { url: "/BLOG/Anime/Zayka.jpg" },
       ],
     },
   ];
@@ -43,11 +47,13 @@ export default function BlogPage() {
           >
             {/* Слайдер: высота адаптируется под экран */}
             <Swiper
-              modules={[Navigation, Pagination]}
+              modules={[EffectFlip, Pagination, Navigation]}
               navigation
               pagination={{ clickable: true }}
               spaceBetween={10}
               slidesPerView={1}
+              effect={'flip'}
+        grabCursor={true}
               className="w-full h-64 sm:h-80 md:h-96 lg:h-[600px]"
             >
               {post.img.map((image, idx) => (
