@@ -1,58 +1,69 @@
-// app/blog/[id]/page.tsx
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
+// src/app/workouts/[id]/page.tsx
 
-type Post = {
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { use } from "react";
+
+type Workout = {
   id: number;
   title: string;
-  content: string;
-  createdAt: Date;
+  description: string;
 };
 
-// Статичный массив для демо
-const posts: Post[] = [
+const workouts: Workout[] = [
   {
     id: 1,
-    title: "Первый пост",
-    content: "<p>Это содержимое первого поста.</p>",
-    createdAt: new Date("2025-01-01"),
+    title: "Первая тренировка",
+    description: "<p>Описание первой тренировки.</p>",
   },
   {
     id: 2,
-    title: "Второй пост",
-    content: "<p>Это содержимое второго поста.</p>",
-    createdAt: new Date("2025-02-01"),
+    title: "Вторая тренировка",
+    description: "<p>Описание второй тренировки.</p>",
   },
 ];
 
-// Для SSG: генерим все возможные id
-export function generateStaticParams() {
-  return posts.map(post => ({
-    id: post.id.toString(),
-  }));
+// 1. Синхронно генерируем все id для SSG
+export function generateStaticParams(): { id: string }[] {
+  return workouts.map((w) => ({ id: w.id.toString() }));
 }
 
-// (опционально) Заголовок страницы
-export function generateMetadata({ params }): Metadata {
-  const post = posts.find(p => p.id.toString() === params.id);
-  if (!post) return { title: "Пост не найден" };
-  return { title: post.title };
+// 2. Асинхронно формируем метаданные, дождавшись params
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const workout = workouts.find((w) => w.id.toString() === id);
+  return workout
+    ? { title: workout.title }
+    : { title: "Тренировка не найдена" };
 }
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
-  const post = posts.find(p => p.id.toString() === params.id);
+// 3. Основной компонент — оба пропса (params и searchParams) приходят как Promise
+export default function WorkoutPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  // React 19-хук use() “читает” Promise и возвращает результат
+  const { id } = use(params);
+  // при желании можно достать и searchParams:
+  // const qs = use(searchParams);
 
-  if (!post) {
-    notFound();
-  }
+  const workout = workouts.find((w) => w.id.toString() === id);
+  if (!workout) notFound();
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
-      <p className="text-gray-500 mb-4">
-        Дата публикации: {post.createdAt.toLocaleDateString()}
-      </p>
-      <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <h1 className="text-3xl font-bold mb-2">{workout.title}</h1>
+      <div
+        className="prose"
+        dangerouslySetInnerHTML={{ __html: workout.description }}
+      />
     </div>
   );
 }

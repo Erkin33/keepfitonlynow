@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/api/chat/route.ts", "src/app/api/workouts/finish/route.jsx"  ],
+, "src/app/api/chat/route.ts", "src/app/api/workouts/finish/route.tsx"  ],
   "exclude": [
     "node_modules"
   ]
