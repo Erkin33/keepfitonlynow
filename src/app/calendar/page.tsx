@@ -1,26 +1,47 @@
-"use client";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import { useState } from "react";
+"use client"
+import React from "react";
+import { Calendar } from "@heroui/calendar";
+import {today, getLocalTimeZone, isWeekend} from "@internationalized/date";
+import {useLocale} from "@react-aria/i18n";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+export default function App() {
+  let [date, setDate] = React.useState(today(getLocalTimeZone()));
+  let {locale} = useLocale();
+  let isInvalid = isWeekend(date, locale);
 
-export default function CalendarPage() {
-  const [date, setDate] = useState(new Date());
+  const { data: session, status } = useSession();
 
-  // Обертка для setDate, чтобы соответствовать типу onChange
-  const handleDateChange = (value, event) => {
-    // Если value — массив (при выборе диапазона), возьмем первый элемент
-    if (Array.isArray(value)) {
-      setDate(value[0]);
-    } else {
-      setDate(value);
-    }
-  };
+  if (status === "loading") return <p>Загрузка...</p>;
+  if (!session)
+    return (
+      <div className="max-w-md mx-auto mt-10 text-center">
+        <p className="mb-4">
+          Для просмотра тренировок необходимо войти в систему.
+        </p>
+        <Link
+          href="/login"
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          Войти
+        </Link>
+      </div>
+    );
 
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Календарь тренировок</h1>
-      <Calendar onChange={handleDateChange} value={date} />
-      <p className="mt-4">Выбрана дата: {date.toDateString()}</p>
+  else return (
+    <div className="w-full ">
+      <div className="w-[300px] h-full  mx-auto my-auto">
+      <Calendar
+      aria-label="Date (Invalid on weekends)"
+      errorMessage={isInvalid ? "We are closed on weekends" : undefined}
+      isInvalid={isInvalid}
+      value={date}
+      onChange={setDate}
+      className="cursor-pointer"
+    />
     </div>
+    </div>
+    
   );
 }
+

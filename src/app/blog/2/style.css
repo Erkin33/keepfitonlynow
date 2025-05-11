@@ -1,0 +1,8 @@
+#main{
+    background: url('./ran.jpg');
+    background-size: cover;
+}
+
+*{
+    font-family: "Rubik", sans-serif;
+}

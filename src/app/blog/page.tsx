@@ -1,6 +1,5 @@
-// app/blog/page.tsx
 "use client";
-
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,11 +32,27 @@ export default function BlogPage() {
       ],
     },
   ];
+  const { data: session, status } = useSession();
 
-  return (
+  if (status === "loading") return <p>Загрузка...</p>;
+  if (!session)
+    return (
+      <div className="max-w-md mx-auto mt-10 text-center">
+        <p className="mb-4">
+          Для просмотра тренировок необходимо войти в систему.
+        </p>
+        <Link
+          href="/login"
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          Войти
+        </Link>
+      </div>
+    );
+   else return (
+    
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-6">Блог</h1>
-
       {/* Сетка: 1 колонка на мобилках, 2 — на md+ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => (
@@ -85,4 +100,5 @@ export default function BlogPage() {
       </div>
     </div>
   );
+  
 }

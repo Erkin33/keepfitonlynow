@@ -2,6 +2,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
+import {Rubik} from "next/font/google"
+
+
+const Rub = Rubik({
+subsets: ["latin"],
+weight: "500",
+});
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,21 +22,21 @@ export default function Header() {
   return (
     <header className="bg-[#181818] text-white relative z-30">
       <div className="container mx-auto max-w-[1180px] flex items-center justify-between p-4 h-[60px]">
-        <Link href="/" className="text-xl md:text-[34px] font-serif font-bold">
+        <Link href="/" className={`text-xl md:text-[34px] font-serif font-bold ${Rub.className}`}>
           KeepFitOnly
         </Link>
         <nav className="hidden md:flex space-x-6">
-          <Link href="/workouts" className="hover:underline">
+          <Link href="/workouts" className="hover:underline duration-[0.7s]">
             Тренировки
           </Link>
-          <Link href="/calendar" className="hover:underline">
+          <Link href="/calendar" className="hover:underline duration-[0.7s]">
             Календарь
           </Link>
-          <Link href="/blog" className="hover:underline">
+          <Link href="/blog" className="hover:underline duration-[0.7s]">
             Блог
           </Link>
           {session ? (
-            <Link href="/profile" className="flex  hover:underline">
+            <Link href="/profile" className="flex  hover:underline duration-[0.7s]">
               Личный кабинет
               <img
                 className="ml-2"
@@ -41,10 +48,10 @@ export default function Header() {
             </Link>
           ) : (
             <>
-              <Link href="/login" className="hover:underline">
+              <Link href="/login" className="hover:underline duration-[0.7s]">
                 Войти
               </Link>
-              <Link href="/register" className="hover:underline">
+              <Link href="/register" className="hover:underline duration-[0.7s]">
                 Регистрация
               </Link>
             </>

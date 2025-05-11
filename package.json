@@ -10,15 +10,19 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@heroui/calendar": "^2.2.19",
+    "@heroui/system": "^2.4.15",
+    "@heroui/theme": "^2.4.15",
     "@prisma/client": "^6.5.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
+    "framer-motion": "^12.10.5",
     "next": "15.2.4",
     "next-auth": "^4.24.11",
     "prisma": "^6.5.0",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "react-calendar": "^5.1.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "swiper": "^11.2.6"
   },
