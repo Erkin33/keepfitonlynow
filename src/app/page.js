@@ -212,7 +212,11 @@ console.log(Plans)
     </div>
   </div>
 </div>
+      <div className="w-full left-auto right-auto h-full bg-[red] fixed">
+        <div className="w-1/2 h-full bg-[#000000] mx-auto my-auto flex flex-col justify-around">
 
+        </div>
+      </div>
       {/* <FloatingButton/> */}
     </div>
   );
