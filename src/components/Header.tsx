@@ -35,6 +35,10 @@ export default function Header() {
           <Link href="/blog" className="hover:underline duration-[0.7s]">
             Блог
           </Link>
+          <audio controls className="w-[300px]" autoPlay>
+            <source src="/Audio/Miside.m4a" type="audio/mpeg"/>
+            Ваш браузер не поддерживает аудио.
+          </audio>
           {/* {session ? (
             <Link href="/profile" className="flex  hover:underline duration-[0.7s]">
               Личный кабинет

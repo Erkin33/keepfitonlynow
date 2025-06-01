@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 import { Rubik } from 'next/font/google'
- 
+import WarnAudioDefault from "../components/warnAndAudio";
 const geist = Rubik({
   subsets: ['latin'],
 })
