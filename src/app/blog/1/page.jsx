@@ -5,21 +5,7 @@ import { useSession } from "next-auth/react";
 export default function Blog_First() {
     const { data: session, status } = useSession();
     
-      if (status === "loading") return <p>Загрузка...</p>;
-      if (!session)
-        return (
-          <div className="max-w-md mx-auto mt-10 text-center">
-            <p className="mb-4">
-              Для просмотра тренировок необходимо войти в систему.
-            </p>
-            <Link
-              href="/login"
-              className="px-4 py-2 bg-blue-600 text-white rounded"
-            >
-              Войти
-            </Link>
-          </div>
-        );
+      //
     return (
         <div className="max-w-[1250px] mx-auto bg-[#120c0c] px-4 py-10">
             <div className="flex flex-col gap-6">

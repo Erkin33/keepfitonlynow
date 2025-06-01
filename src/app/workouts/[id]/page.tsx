@@ -14,20 +14,7 @@ export default function WorkoutDetail() {
   const { data: session, status } = useSession();
 
   if (status === "loading") return <p>Загрузка...</p>;
-  if (!session)
-    return (
-      <div className="max-w-md mx-auto mt-10 text-center">
-        <p className="mb-4">
-          Для просмотра тренировок необходимо войти в систему.
-        </p>
-        <Link
-          href="/login"
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          Войти
-        </Link>
-      </div>
-    );
+  //
   useEffect(() => {
     // Пример получения данных тренировки по ID с адаптивными изображениями и описаниями
     let workoutData;
@@ -119,7 +106,7 @@ export default function WorkoutDetail() {
                 alt={`Изображение ${index + 1} для ${workout.title}`}
                 className="w-full max-h-[300px] sm:max-h-[400px] md:max-h-[500px] object-contain"
               />
-              <p className="absolute bottom-2 left-2 bg-black bg-opacity-60 text-white text-xs sm:text-sm px-2 py-1 rounded">
+              <p className="absolute select-none bottom-2 left-2 bg-black bg-opacity-60 text-white text-xs sm:text-sm px-2 py-1 rounded">
                 {img.description}
               </p>
             </div>

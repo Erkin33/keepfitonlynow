@@ -35,7 +35,7 @@ export default function Header() {
           <Link href="/blog" className="hover:underline duration-[0.7s]">
             Блог
           </Link>
-          {session ? (
+          {/* {session ? (
             <Link href="/profile" className="flex  hover:underline duration-[0.7s]">
               Личный кабинет
               <img
@@ -55,7 +55,7 @@ export default function Header() {
                 Регистрация
               </Link>
             </>
-          )}
+          )} */}
         </nav>
         <div className="flex items-center gap-4">
           {/* Иконки соцсетей для десктопа */}
@@ -122,7 +122,7 @@ export default function Header() {
               <Link href="/blog" onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-gray-800">
                 Блог
               </Link>
-              {session ? (
+              {/* {session ? (
                 <>
                   <Link
                     href="/profile"
@@ -157,7 +157,7 @@ export default function Header() {
                     Регистрация
                   </Link>
                 </>
-              )}
+              )} */}
             </nav>
             <div className="flex w-full my-auto justify-around mt-4">
             <a href="https://t.me/keepfitonly">

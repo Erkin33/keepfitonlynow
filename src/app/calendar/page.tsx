@@ -13,20 +13,7 @@ export default function App() {
   const { data: session, status } = useSession();
 
   if (status === "loading") return <p>Загрузка...</p>;
-  if (!session)
-    return (
-      <div className="max-w-md mx-auto mt-10 text-center">
-        <p className="mb-4">
-          Для просмотра тренировок необходимо войти в систему.
-        </p>
-        <Link
-          href="/login"
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          Войти
-        </Link>
-      </div>
-    );
+  //
 
   else return (
     <div className="w-full ">
