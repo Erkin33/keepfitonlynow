@@ -89,12 +89,12 @@ export default function Blog_First() {
         {/* Верхняя часть */}
         <div className="w-full rounded-t-[16px] bg-[#dee0e3] h-auto md:h-[150px] flex flex-col justify-around py-4 px-4">
           <div className="w-full md:w-[95%] mx-auto my-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4 h-auto">
-            <h2 className={`text-[26px] md:text-[34px] ${Rub.className} text-[#2F3437]`}>
+            <h2 className={`dark:text-[black] text-[26px] md:text-[34px] ${Rub.className} text-[#2F3437]`}>
               Читать
             </h2>
             <Link
               href={'#'}
-              className={`text-[16px] md:text-[17px] rounded-[10px] hover:bg-[#00a879] hover:text-[#ffffff] duration-700 leading-[40px] py-[8px] px-[32px] border-[1.6px] border-[#00a879] ${Rub.className}`}
+              className={`dark:text-[black] text-[16px] md:text-[17px] rounded-[10px] hover:bg-[#00a879] hover:text-[#ffffff] duration-700 leading-[40px] py-[8px] px-[32px] border-[1.6px] border-[#00a879] ${Rub.className}`}
             >
               Написать блог
             </Link>
@@ -104,13 +104,13 @@ export default function Blog_First() {
         {/* Контент */}
         <div className={`w-full px-4 sm:px-[5%] flex flex-col justify-between items-center bg-[#f3f4f5] rounded-[16px] py-6`}>
           <div className="w-full flex flex-wrap gap-2 mt-[15px] items-center text-sm text-[#747c81]">
-            <Link href={'/'} className={`text-[14px] text-[#747c81]`}>Главная /</Link>
-            <Link href={'/blog'} className={`text-[14px] ${Rub.className} text-[#747c81]`}>Блоги /</Link>
-            <Link href={'/blog/2'} className={`text-[14px] ${Rub.className} text-[#747c81]`}>Аниме</Link>
+            <Link href={'/'} className={`dark:text-[black] text-[14px] text-[#747c81]`}>Главная /</Link>
+            <Link href={'/blog'} className={`dark:text-[black] text-[14px] ${Rub.className} text-[#747c81]`}>Блоги /</Link>
+            <Link href={'/blog/2'} className={`dark:text-[black] text-[14px] ${Rub.className} text-[#747c81]`}>Аниме</Link>
           </div>
 
           <div className="w-full flex flex-col md:flex-row justify-between mt-[25px] items-start md:items-center gap-4">
-            <h2 className={`text-[24px] md:text-[34px] ${Rub.className} text-[#2F3437]`}>
+            <h2 className={`dark:text-[black] text-[24px] md:text-[34px] ${Rub.className} text-[#2F3437]`}>
               Лучшее за неделю
             </h2>
 
@@ -119,7 +119,7 @@ export default function Blog_First() {
                 <a
                   key={idx}
                   href="#"
-                  className="text-[14px] md:text-[16px] hover:bg-[#747c81] duration-700 hover:text-[#ffffff] leading-[28px] flex justify-center items-center py-[6px] px-[21px] rounded-[8px] bg-[#ffffff] whitespace-nowrap"
+                  className="dark:text-[black] text-[14px] md:text-[16px] hover:bg-[#747c81] duration-700 hover:text-[#ffffff] leading-[28px] flex justify-center items-center py-[6px] px-[21px] rounded-[8px] bg-[#ffffff] whitespace-nowrap"
                 >
                   {item}
                 </a>
@@ -145,7 +145,7 @@ export default function Blog_First() {
                       <div className="w-[80%] h-[80%]" style={{ backgroundImage: `url(${animes.hero})`, backgroundSize: 'cover' }} />
                     </div>
                     <div className="w-[49.41px] h-[32px] rounded-[4px] flex justify-center items-center bg-[#00a879]">
-                      <p className="text-[18px] text-[#fff] font-[500]">
+                      <p className="dark:text-[black] text-[18px] text-[#fff] font-[500]">
                         +{animes.number}
                       </p>
                     </div>
@@ -156,7 +156,7 @@ export default function Blog_First() {
                 <div className="w-[90%] h-[42.8px] flex justify-between px-[12px] py-[8px] mx-auto">
                   <div className="flex items-center gap-2">
                     <img width="25" height="18" src="https://img.icons8.com/pastel-glyph/128/document--v1.png" alt="document" />
-                    <p>{animes.name}</p>
+                    <p className="dark:text-[black]">{animes.name}</p>
                   </div>
                   <img className="cursor-pointer" width="22" height="22" src="https://img.icons8.com/windows/32/bookmark-ribbon--v1.png" alt="bookmark" />
                 </div>
@@ -166,21 +166,21 @@ export default function Blog_First() {
                 <div className="w-[90%] h-auto flex flex-col justify-between px-[12px] py-[8px] mx-auto">
                   <div className="flex items-center gap-2">
                     <img width="25" height="18" className="rounded-[50%]" src={animes.account} alt="avatar" />
-                    <p>{animes.accountName}</p>
+                    <p className="dark:text-[black]">{animes.accountName}</p>
                   </div>
 
                   <div className="mt-[5px]">
-                    <h3 className="text-[#41474a] text-[16px] font-[500]">{animes.title}</h3>
+                    <h3 className="dark:text-[black] text-[#41474a] text-[16px] font-[500]">{animes.title}</h3>
                   </div>
                 </div>
 
                 <div className="w-[90%] mt-[20px] h-[30px] flex flex-row items-center justify-between px-[12px] mx-auto">
-                  <p>{animes.date}</p>
+                  <p className="dark:text-[black]">{animes.date}</p>
                   <div className="w-[30%] flex justify-between items-center">
                     <img width="25" height="25" src="https://img.icons8.com/ios/50/error--v1.png" alt="error" />
                     <div className="w-[60%] hover:text-[red] cursor-pointer flex justify-around">
                       <img width="25" height="20" src="https://img.icons8.com/ios/50/speech-bubble-with-dots--v1.png" alt="comments" />
-                      <p>{animes.comments}</p>
+                      <p className="dark:text-[black]">{animes.comments}</p>
                     </div>
                   </div>
                 </div>

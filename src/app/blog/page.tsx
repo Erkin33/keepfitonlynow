@@ -77,11 +77,11 @@ export default function BlogPage() {
 
             {/* Текстовая часть */}
             <Link href={`/blog/${post.id}`}>
-              <h2 className="text-xl font-semibold hover:underline">
+              <h2 className="dark:text-[black] text-xl font-semibold hover:underline">
                 {post.title}
               </h2>
             </Link>
-            <p className="text-gray-600">{post.excerpt}</p>
+            <p className="dark:text-[black] text-gray-600">{post.excerpt}</p>
           </div>
         ))}
       </div>

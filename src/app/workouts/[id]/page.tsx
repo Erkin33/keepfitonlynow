@@ -106,7 +106,7 @@ export default function WorkoutDetail() {
                 alt={`Изображение ${index + 1} для ${workout.title}`}
                 className="w-full max-h-[300px] sm:max-h-[400px] md:max-h-[500px] object-contain"
               />
-              <p className="absolute select-none bottom-2 left-2 bg-black bg-opacity-60 text-white text-xs sm:text-sm px-2 py-1 rounded">
+              <p className="dark:text-[black] absolute select-none bottom-2 left-2 bg-black bg-opacity-60 text-white text-xs sm:text-sm px-2 py-1 rounded">
                 {img.description}
               </p>
             </div>
@@ -123,7 +123,7 @@ export default function WorkoutDetail() {
 
       {completed ? (
         <div>
-          <p className="mt-4 text-green-600 font-semibold text-center">
+          <p className="dark:text-[black] mt-4 text-green-600 font-semibold text-center">
             Тренировка завершена! {finishMessage && `(${finishMessage})`}
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function WorkoutDetail() {
         </div>
       )}
 
-      <Link href="/workouts" className="block mt-6 text-blue-600 text-center">
+      <Link href="/workouts" className="dark:text-[black] block mt-6 text-blue-600 text-center">
         Вернуться к тренировкам
       </Link>
     </div>

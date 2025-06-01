@@ -49,9 +49,9 @@ export default function WorkoutsPage() {
             <Link href={`/workouts/${w.id}`}>
               <div className="w-full flex flex-col ">
                 <div className="w-full flex flex-row justify-start">
-                <h2 className="text-2xl font-semibold mb-4 items-center">{w.title}</h2>
+                <h2 className="dark:text-[black] text-2xl font-semibold mb-4 items-center">{w.title}</h2>
                 <div className="ml-4 flex mb-4  items-center">
-                  <h1 style={{backgroundColor: `${w.bg}`, color: `${w.text}`}} className="font-[800] items-center text-[14px] w-[100%] px-1 py-1 rounded-[7px]">
+                  <h1 style={{backgroundColor: `${w.bg}`, color: `${w.text}`}} className="dark:text-[black] font-[800] items-center text-[14px] w-[100%] px-1 py-1 rounded-[7px]">
                     {w.type}
                   </h1>
                 </div>
@@ -61,7 +61,7 @@ export default function WorkoutsPage() {
                     <img key={w.id} src={img.url} />
                   )
                 })}
-                <p className="text-gray-700 mt-2">Длительность: {w.duration} минут</p>
+                <p className="dark:text-[black] text-gray-700 mt-2">Длительность: {w.duration} минут</p>
               </div>
             </Link>
           </li>

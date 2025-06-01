@@ -24,7 +24,7 @@ export default function App() {
       isInvalid={isInvalid}
       value={date}
       onChange={setDate}
-      className="cursor-pointer"
+      className="dark:text-[black] text-[black] cursor-pointer"
     />
     </div>
     </div>
