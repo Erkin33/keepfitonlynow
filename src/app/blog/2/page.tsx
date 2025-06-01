@@ -3,13 +3,11 @@ import { Rubik } from "next/font/google"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import "./style.css"
-import { url } from "inspector"
-import WorkoutsPage from "../../workouts/page"
+
 const Rub = Rubik({
   subsets: ["latin"],
   weight: "500",
 });
-console.log(useSession)
 
 export default function Blog_First() {
 
@@ -26,7 +24,6 @@ export default function Blog_First() {
        date:'13 мая',
        comments:'16', 
     },
-    
     {
        img: '/Anime/Second.jpg',
        hero: '',
@@ -82,22 +79,12 @@ export default function Blog_First() {
        date:'21 марта',
        comments:'1', 
     },
-]
-
+  ];
 
   const { data: session, status } = useSession();
 
-  //
-
-  const blocks = [
-    {
-      id: 1,
-      imgUrl: '',
-    }
-  ]
-
   return (
-    <div className="max-w-[1450px] mx-auto my-[5em] px-4 md:px-8 lg:px-10 py-10">
+    <div className="max-w-[1450px] mx-auto my-[2em] px-2 md:px-8 lg:px-10 py-6">
       <div className="flex flex-col bg-[#dee0e3] rounded-[16px]">
         {/* Верхняя часть */}
         <div className="w-full rounded-t-[16px] bg-[#dee0e3] h-auto md:h-[150px] flex flex-col justify-around py-4 px-4">
@@ -117,7 +104,7 @@ export default function Blog_First() {
         {/* Контент */}
         <div className={`w-full px-4 sm:px-[5%] flex flex-col justify-between items-center bg-[#f3f4f5] rounded-[16px] py-6`}>
           <div className="w-full flex flex-wrap gap-2 mt-[15px] items-center text-sm text-[#747c81]">
-            <Link href={'/'} className={`text-[14px] text-[#747c81]`}>Глвная /</Link>
+            <Link href={'/'} className={`text-[14px] text-[#747c81]`}>Главная /</Link>
             <Link href={'/blog'} className={`text-[14px] ${Rub.className} text-[#747c81]`}>Блоги /</Link>
             <Link href={'/blog/2'} className={`text-[14px] ${Rub.className} text-[#747c81]`}>Аниме</Link>
           </div>
@@ -139,82 +126,68 @@ export default function Blog_First() {
               ))}
             </div>
           </div>
-              <div className="w-full flex  justify-between items-center flex-wrap  mt-[3em]">
-                {aniInfo.map((animes, index) =>{
-                    return(
-                      // блоки
-                      <div key={index} className="w-[386.66px] overflow-hidden bg-[#fff] h-[409.75px] flex flex-col rounded-[8px] my-[2%]">
-                        {/* Картины */}
-                        <div style={{backgroundImage:`url(${animes.img})`, backgroundSize:'Cover'}} className={`hover:scale-[1.1] cursor-pointer duration-[0.7s] w-[385.04px] h-[225.34px] rounded-t-[8px] flex items-start`}>
-                          {/* Кубок и номер */}
-                          <div className="w-[95%] mx-auto h-[32px]  mt-[2%] rounded-[4px] flex justify-between items-center">
-                            {/* Кубок */}
-                            <div className="w-[38px] h-[32px] rounded-[4px] flex justify-center items-center" style={{backgroundColor: `${animes.color}`}}>
-                              <div className="w-[80%] h-[80%]" style={{backgroundImage: `url(${animes.hero})`, backgroundSize:'cover'}}>
-                              </div>
-                            </div>
-                            {/* Число */}
-                            <div className="w-[49.41px] h-[32px] rounded-[4px] flex justify-center items-center" style={{backgroundColor: `#00a879`}}>
-                              <p className="text-[18px] text-[#fff] font-[500]">
-                                +{animes.number}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        {/* Инфо */}
-                        <div className="w-[365.08px]  h-[42.8px] flex justify-between px-[12px] py-[8px] mx-auto">
 
-                          <div className="flex items-center gap-2">
-                              <img width="25" height="18" src="https://img.icons8.com/pastel-glyph/128/document--v1.png" alt="document--v1"/>
-                              <p>
-                                {animes.name}
-                              </p>
-                          </div>
+          {/* Карточки */}
+          <div className="w-full flex justify-center gap-4 flex-wrap mt-[3em]">
+            {aniInfo.map((animes, index) => (
+              <div
+                key={index}
+                className="w-full sm:w-[48%] lg:w-[386.66px] overflow-hidden bg-[#fff] h-[409.75px] flex flex-col rounded-[8px] my-[2%]"
+              >
+                {/* Картинка */}
+                <div style={{
+                  backgroundImage: `url(${animes.img})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} className={`hover:scale-[1.1] cursor-pointer duration-[0.7s] w-full h-[225.34px] rounded-t-[8px] flex items-start`}>
+                  <div className="w-[95%] mx-auto h-[32px] mt-[2%] rounded-[4px] flex justify-between items-center">
+                    <div className="w-[38px] h-[32px] rounded-[4px] flex justify-center items-center" style={{ backgroundColor: `${animes.color}` }}>
+                      <div className="w-[80%] h-[80%]" style={{ backgroundImage: `url(${animes.hero})`, backgroundSize: 'cover' }} />
+                    </div>
+                    <div className="w-[49.41px] h-[32px] rounded-[4px] flex justify-center items-center bg-[#00a879]">
+                      <p className="text-[18px] text-[#fff] font-[500]">
+                        +{animes.number}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-                           <img className="cursor-pointer" width="22" height="22" src="https://img.icons8.com/windows/32/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
-                        </div>
-                        <div className="border-b-[1px] border-[#e4e8eb]">
+                {/* Инфо */}
+                <div className="w-[90%] h-[42.8px] flex justify-between px-[12px] py-[8px] mx-auto">
+                  <div className="flex items-center gap-2">
+                    <img width="25" height="18" src="https://img.icons8.com/pastel-glyph/128/document--v1.png" alt="document" />
+                    <p>{animes.name}</p>
+                  </div>
+                  <img className="cursor-pointer" width="22" height="22" src="https://img.icons8.com/windows/32/bookmark-ribbon--v1.png" alt="bookmark" />
+                </div>
 
-                        </div>
+                <div className="border-b-[1px] border-[#e4e8eb]" />
 
-                        <div className="w-[365.08px]  h-[42.8px] flex flex-col justify-between px-[12px] py-[8px] mx-auto">
+                <div className="w-[90%] h-auto flex flex-col justify-between px-[12px] py-[8px] mx-auto">
+                  <div className="flex items-center gap-2">
+                    <img width="25" height="18" className="rounded-[50%]" src={animes.account} alt="avatar" />
+                    <p>{animes.accountName}</p>
+                  </div>
 
-                          <div className="flex items-center gap-2">
-                              <img width="25" height="18" className="rounded-[50%]" src={animes.account} alt="document--v1"/>
-                              <p>
-                                {animes.accountName}
-                              </p>
-                          </div>
+                  <div className="mt-[5px]">
+                    <h3 className="text-[#41474a] text-[16px] font-[500]">{animes.title}</h3>
+                  </div>
+                </div>
 
+                <div className="w-[90%] mt-[20px] h-[30px] flex flex-row items-center justify-between px-[12px] mx-auto">
+                  <p>{animes.date}</p>
+                  <div className="w-[30%] flex justify-between items-center">
+                    <img width="25" height="25" src="https://img.icons8.com/ios/50/error--v1.png" alt="error" />
+                    <div className="w-[60%] hover:text-[red] cursor-pointer flex justify-around">
+                      <img width="25" height="20" src="https://img.icons8.com/ios/50/speech-bubble-with-dots--v1.png" alt="comments" />
+                      <p>{animes.comments}</p>
+                    </div>
+                  </div>
+                </div>
 
-                           <div className="mt-[5px]">
-                              <h3 className="text-[#41474a] text-[16px] font-[500] ">
-                                {animes.title}
-                              </h3>
-
-                           </div>
-
-                        </div>
-                        <div className="w-[365.08px] mt-[50px] h-[30px] flex flex-row items-center justify-between px-[12px] mx-auto">
-                        <p>
-                          {animes.date}
-                        </p>
-                        <div className="w-[30%] flex justify-between items-center">
-                          <img width="25" height="25" src="https://img.icons8.com/ios/50/error--v1.png" alt="error--v1"/>
-                          <div className="w-[60%] hover:text-[red] cursor-pointer flex justify-around">
-                            <img width="25" height="20" src="https://img.icons8.com/ios/50/speech-bubble-with-dots--v1.png" alt="speech-bubble-with-dots--v1"/>
-                            <p>
-                              {animes.comments}
-                            </p>
-                          </div>
-                          
-
-                        </div>
-                        </div>
-                      </div>
-                    )
-                })}
               </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
