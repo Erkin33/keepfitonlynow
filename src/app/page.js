@@ -125,11 +125,11 @@ console.log(Plans)
         {/* Левая колонка с текстовым контентом и кнопками */}
         <div className="max-[1024px]:hidden w-[250px] max-[1400px]:w-[200px] flex flex-col items-center justify-center h-[90%]">
           <div className="max-w-[420px] w-full h-[50%] flex flex-col justify-center">
-            <h2 style={{color: `${textColor}`}} className="max-[1100px]:text-[29px] w-full max-[1400px]:text-[40px] font-[600] text-[44px] leading-[58px] text-left">
+            <h2 style={{color: `${textColor}`}} className="dark:text-[black] max-[1100px]:text-[29px] w-full max-[1400px]:text-[40px] font-[600] text-[44px] leading-[58px] text-left">
               {info}
             </h2>
-            <p style={{color : `${textColor}`}} className="text-start w-full font-[600] text-[14px]">
-              <span className="bg-[#dd8553]">{specialInfo}</span> {MainInfo}
+            <p style={{color : `${textColor}`}} className="dark:text-[black] text-start w-full font-[600] text-[14px]">
+              <span className="dark:text-[black] bg-[#dd8553]">{specialInfo}</span> {MainInfo}
             </p>
           </div>
           {/* Кнопки переключения */}
@@ -138,7 +138,7 @@ console.log(Plans)
               <button
                 key={index}
                 onClick={() => setNumber(index)}
-                className={`w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
+                className={`dark:text-[black] w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
                   number === index ? "bg-black" : "bg-white"
                 }`}
               ></button>
@@ -157,11 +157,11 @@ console.log(Plans)
         {/* Правая колонка с повтором текстового контента */}
         <div className="w-[380px] max-[1300px]:w-[250px] h-[90%] flex flex-col justify-center max-[850px]:space-around items-center">
           <div className="w-full max-[1024px]:h-[60%] h-[40%] flex flex-col justify-around items-start">
-            <p style={{color: `${textColor}`}} className="max-[1300px]:text-[12px] text-start w-full font-[600] text-[14px]">
+            <p style={{color: `${textColor}`}} className="dark:text-[black] max-[1300px]:text-[12px] text-start w-full font-[600] text-[14px]">
               {rightInfo}              
             </p>
             <Link href={'/workouts'}>
-            <button  style={{color: `${textColor}`, borderColor: `${textColor}`}} className="max-[1300px]:text-[12px] min-w-[216px] border-[1px] border-[#181818] min-h-[50px] mt-[40px] max-[1024px]:mb-[40px]">
+            <button  style={{color: `${textColor}`, borderColor: `${textColor}`}} className="dark:text-[black] max-[1300px]:text-[12px] min-w-[216px] border-[1px] border-[#181818] min-h-[50px] mt-[40px] max-[1024px]:mb-[40px]">
                 {buttonInfo}
             </button>
             </Link>
@@ -172,7 +172,7 @@ console.log(Plans)
               <button
                 key={index}
                 onClick={() => setNumber(index)}
-                className={`w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
+                className={`dark:text-[black] w-[24px] max-[1400px]:w-[18px] max-[1400px]:h-[18px] h-[24px] border border-black rounded-full ${
                   number === index ? "bg-black" : "bg-white"
                 }`}
               ></button>
@@ -187,7 +187,7 @@ console.log(Plans)
             {/* Second block */}
 <div className="w-full h-auto md:h-[422px] flex mt-[90px] min-[768px]:mb-[90px]">
   <div className="w-full md:h-full max-w-[1180px] mx-auto flex flex-col justify-between">
-    <h2 className="text-[48px] leading-[58px] font-[600]">
+    <h2 className="dark:text-[black] text-[48px] leading-[58px] font-[600]">
       Наш подход
     </h2>
     <div className="w-full flex flex-col md:flex-row md:justify-between">
@@ -202,9 +202,9 @@ console.log(Plans)
               src={plan.img}
               alt={plan.title}
             />
-            <p className="font-[600] text-[26px] w-[80%]">{plan.title}</p>
+            <p className="dark:text-[black] font-[600] text-[26px] w-[80%]">{plan.title}</p>
           </div>
-          <p className="mt-[40px] text-[16px] leading-[22px]">
+          <p className="mt-[40px] text-[16px] dark:text-[black] leading-[22px]">
             {plan.description}
           </p>
         </div>
@@ -213,7 +213,7 @@ console.log(Plans)
   </div>
 </div>
 
-      <FloatingButton/>
+      {/* <FloatingButton/> */}
     </div>
   );
 }
