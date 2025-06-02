@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import {Rubik} from "next/font/google"
-
+import AudioPlayer from "./Audio"
 
 const Rub = Rubik({
 subsets: ["latin"],
@@ -25,7 +25,7 @@ export default function Header() {
         <Link href="/" className={`text-xl md:text-[34px] font-serif font-bold ${Rub.className}`}>
           KeepFitOnly
         </Link>
-        <nav className="hidden md:flex space-x-6">
+        <nav className="hidden md:flex space-x-6 flex items-center">
           <Link href="/workouts" className="hover:underline duration-[0.7s]">
             Тренировки
           </Link>
@@ -35,10 +35,8 @@ export default function Header() {
           <Link href="/blog" className="hover:underline duration-[0.7s]">
             Блог
           </Link>
-          <audio controls className="w-[300px]" autoPlay>
-            <source src="/Audio/Miside.m4a" type="audio/mpeg"/>
-            Ваш браузер не поддерживает аудио.
-          </audio>
+          <AudioPlayer/>
+          
           {/* {session ? (
             <Link href="/profile" className="flex  hover:underline duration-[0.7s]">
               Личный кабинет
@@ -113,7 +111,7 @@ export default function Header() {
                 </svg>
               </button>
             </div>
-            <nav className="flex flex-col items-center space-y-6 mt-4">
+            <nav className="flex flex-col items-center space-y-6 mt-4 items-center">
               <Link href="/" onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-gray-800">
                 Главная
               </Link>
@@ -126,6 +124,7 @@ export default function Header() {
               <Link href="/blog" onClick={() => setIsOpen(false)} className="text-2xl font-semibold text-gray-800">
                 Блог
               </Link>
+              <AudioPlayer/>
               {/* {session ? (
                 <>
                   <Link
