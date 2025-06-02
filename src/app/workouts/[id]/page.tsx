@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import WorkoutTimer from "../../../components/WorkoutTimer";
 import { useSession } from "next-auth/react";
+
 export default function WorkoutDetail() {
   const params = useParams();
   const [workout, setWorkout] = useState(null);
@@ -14,9 +15,8 @@ export default function WorkoutDetail() {
   const { data: session, status } = useSession();
 
   if (status === "loading") return <p>Загрузка...</p>;
-  //
+
   useEffect(() => {
-    // Пример получения данных тренировки по ID с адаптивными изображениями и описаниями
     let workoutData;
     if (params.id === "1") {
       workoutData = {
@@ -65,12 +65,10 @@ export default function WorkoutDetail() {
     setWorkout(workoutData);
   }, [params.id]);
 
-  // Функция, вызываемая при завершении таймера
   const handleTimerComplete = () => {
     setCompleted(true);
   };
 
-  // Функция для ручного завершения тренировки
   const finishWorkout = async () => {
     try {
       const res = await fetch("/api/workouts/finish", {
@@ -95,8 +93,7 @@ export default function WorkoutDetail() {
   return (
     <div className="container mx-auto px-4 py-6 max-w-screen-lg">
       <h1 className="text-3xl font-bold mb-6 text-center">{workout.title}</h1>
-      
-      {/* Адаптивный слайдер изображений с описаниями */}
+
       <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }} className="mb-6">
         {workout.images.map((img, index) => (
           <SwiperSlide key={index}>
@@ -115,10 +112,7 @@ export default function WorkoutDetail() {
       </Swiper>
 
       <div className="mb-6">
-        <WorkoutTimer
-          duration={workout.duration * 60}
-          onComplete={handleTimerComplete}
-        />
+        <WorkoutTimer duration={workout.duration * 60} onComplete={handleTimerComplete} />
       </div>
 
       {completed ? (
@@ -128,14 +122,7 @@ export default function WorkoutDetail() {
           </p>
         </div>
       ) : (
-        <div className="flex justify-center">
-          {/* <button
-            onClick={finishWorkout}
-            className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300"
-          >
-            Завершить тренировку
-          </button> */}
-        </div>
+        <div className="flex justify-center"></div>
       )}
 
       <Link href="/workouts" className="dark:text-[black] block mt-6 text-blue-600 text-center">
