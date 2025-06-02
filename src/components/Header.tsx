@@ -89,7 +89,7 @@ export default function Header() {
             onClick={() => setIsOpen(false)}
           ></div>
 
-          <div className="relative bg-white/10 backdrop-blur-xl text-white rounded-xl mx-4 mt-20 p-8 animate-slideDown shadow-2xl border border-white/10">
+          <div className="relative bg-black/90 shadow-[0_8px_30px_rgba(255,0,255,0.3)] backdrop-blur-xl backdrop-blur-xl text-white rounded-xl mx-4 mt-20 p-8 animate-slideDown shadow-2xl border border-white/10">
             <div className="flex justify-end">
               <button onClick={() => setIsOpen(false)}>
                 <svg className="w-6 h-6 hover:text-pink-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
