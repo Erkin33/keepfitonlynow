@@ -1,28 +1,27 @@
-"use client";
-import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { SessionProvider } from "next-auth/react";
+import './globals.css'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Providers from './providers'
 import { Rubik } from 'next/font/google'
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
-export const metadata : Metadata = {
-  title:{absolute:"Enjoy The Moment!"}
+const geist = Rubik({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Enjoy The Moment!',
+  icons: {icon: '/Icons/Enjoy.jpg'}
 }
 
-const geist = Rubik({
-  subsets: ['latin'],
-})
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${geist.className}`}>
+    <html lang="ru" className={geist.className}>
       <body className="min-h-screen flex flex-col">
-        <SessionProvider>{/* Оборачиваем всё приложение */}
+        <Providers>
           <Header />
           <main className="flex-grow w-full mx-auto h-full" id="main">{children}</main>
           <Footer />
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
-  );
+  )
 }
