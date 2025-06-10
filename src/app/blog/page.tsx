@@ -3,10 +3,9 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination,EffectFlip } from "swiper/modules";
-import "swiper/css/effect-flip"
-import 'swiper/css/effect-flip';
-import "swiper/css/effect-fade"
+import { Navigation, Pagination, EffectFlip } from "swiper/modules";
+import "swiper/css/effect-flip";
+import "swiper/css/effect-fade";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -32,38 +31,38 @@ export default function BlogPage() {
       ],
     },
   ];
-  const { data: session, status } = useSession();
 
+  const { data: session, status } = useSession();
   if (status === "loading") return <p>Загрузка...</p>;
-  //
-   else return (
-    
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Блог</h1>
-      {/* Сетка: 1 колонка на мобилках, 2 — на md+ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+  return (
+    <div className="container mx-auto p-6">
+      <h1 className="text-4xl font-extrabold mb-10 text-center bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-transparent bg-clip-text drop-shadow-md">
+        Добро пожаловать в блог KeepfitOnly!
+      </h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {posts.map((post) => (
           <div
             key={post.id}
-            className="border p-4 rounded-lg hover:shadow-lg flex flex-col gap-4"
+            className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl hover:scale-[1.01] hover:shadow-purple-500/30 transition-transform duration-500 border border-gray-200 dark:border-gray-700"
           >
-            {/* Слайдер: высота адаптируется под экран */}
             <Swiper
               modules={[EffectFlip, Pagination, Navigation]}
               navigation
               pagination={{ clickable: true }}
               spaceBetween={10}
               slidesPerView={1}
-              effect={'flip'}
-        grabCursor={true}
-              className="w-full h-64 sm:h-80 md:h-96 lg:h-[600px]"
+              effect={"flip"}
+              grabCursor={true}
+              className="w-full h-72 sm:h-80 md:h-96 lg:h-[500px]"
             >
               {post.img.map((image, idx) => (
                 <SwiperSlide
                   key={idx}
                   className="flex justify-center items-center h-full"
                 >
-                  <div className="relative w-full h-full rounded-md overflow-hidden">
+                  <div className="relative w-full h-full">
                     <Image
                       src={image.url}
                       alt={`${post.title} ${idx + 1}`}
@@ -75,17 +74,19 @@ export default function BlogPage() {
               ))}
             </Swiper>
 
-            {/* Текстовая часть */}
-            <Link href={`/blog/${post.id}`}>
-              <h2 className="dark:text-[black] text-xl font-semibold hover:underline">
-                {post.title}
-              </h2>
-            </Link>
-            <p className="dark:text-[black] text-gray-600">{post.excerpt}</p>
+            <div className="p-6 space-y-3">
+              <Link href={`/blog/${post.id}`}>
+                <h2 className="text-2xl font-bold dark:text-white text-gray-800 hover:text-purple-500 transition-colors duration-300">
+                  {post.title}
+                </h2>
+              </Link>
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                {post.excerpt}
+              </p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-  
 }

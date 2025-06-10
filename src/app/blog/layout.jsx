@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
           <main className="flex-grow w-full mx-auto h-full" id="main">{children}</main>
           <div className="mt-15">
             <h2 className="dark:text-[black] text-center text-[35px] font-bold">
-            Посетите наши тренировки!
+            Посетите невероятные тренировки!
           </h2>
             <WorkoutsPage/>
           </div>

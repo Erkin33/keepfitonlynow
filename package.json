@@ -13,6 +13,7 @@
     "@heroui/calendar": "^2.2.19",
     "@heroui/system": "^2.4.15",
     "@heroui/theme": "^2.4.15",
+    "@internationalized/date": "^3.8.1",
     "@prisma/client": "^6.5.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
